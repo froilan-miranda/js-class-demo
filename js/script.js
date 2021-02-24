@@ -9,14 +9,11 @@ class Pet{
         this.type = type
 
         console.log(this.age)
-        
     }
-
     getDetails(){
         return `My name is ${this.name}, 
         I am a ${this.type} and I am ${this.age} years old`
     }
-
     setAge(age){
         if(typeof age === 'number' && age >= 0){
             this.age = age
@@ -34,7 +31,6 @@ function processForm(event){
     addToInventory(newPet)
    
     clearFormData()
-   
     updateOutput()
 }
 
@@ -44,11 +40,17 @@ function addToInventory(pet){
 }
 
 function updateOutput(){
-    let newPetData = ''
-    for(let pet of petInventory){
-        newPetData += pet.getDetails()
-        newPetData += '<br>'
-    }
+
+    // Using a for/of loop
+    // let newPetData = ''
+    
+    // for(let pet of petInventory){
+    //     newPetData += pet.getDetails()
+    //     newPetData += '<br>'
+    // }
+
+    // Using an Array Iteration method
+    let newPetData = petInventory.reduce((output, pet)=>pet.getDetails() + '<br>', '');
 
     petsOutput.innerHTML = newPetData
 }
